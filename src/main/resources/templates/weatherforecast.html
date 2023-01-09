@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf Basic Template</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/css/all.min.css}"/>
+</head>
+<body>
+
+<!-- Image and text -->
+<nav class="navbar navbar-light ps-md-4" style="background-color: #aaf;">
+    <a class="navbar-brand" href="#">
+        <img th:src="@{/assets/images/team-icon.png}" width="50" height="50" class="d-inline-block align-bottom"
+             alt=""/>
+        <span class="navbar-text h3">LWS WEATHER-FORECAST</span>
+    </a>
+</nav>
+<div class="container-fluid">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-8 col-lg-6 col-xl-4">
+            <form method="get" th:action="@{'/weatherforecast' + '?city='+ *{city} + '&days='+*{days}}"
+                  th:object="${weatherForecastRequestParam}">
+                <!--                  th:with="weatherForecastRequestParam=${new WeatherForecastRequestParam()}">-->
+                <div class="input-group rounded m-3">
+                    <input type="text" class="form-control rounded" placeholder="City" th:field="*{city}">
+                </div>
+                <div class="input-group rounded m-3">
+                    <input type="text" class="form-control rounded" placeholder="Days" th:field="*{days}">
+                </div>
+                <div class="input-group rounded m-3">
+                    <input class="btn btn-primary" type="submit" value="Check">
+                </div>
+                <div class="input-group rounded m-3 text-danger" th:if="${error}">
+                    <h4 th:text="${error}"></h4>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div th:if="${weatherForecast}">
+        <div class="row align-items-center justify-content-center">
+            <h3 class="col-md-10 mb-1 text-center" th:text="${weatherForecast.location.city}"></h3>
+        </div>
+        <div class="row align-items-center justify-content-center" th:if="${weatherForecast}">
+            <div class="col-md-2" th:each="weather: ${weatherForecast.weathers}">
+                <div class="card shadow-0 border">
+                    <div class="card-body p-4">
+                        <p class="mb-2"><strong th:text="${weather.getDate()}"></strong></p>
+                        <p class="mb-2">Temperatur: <strong th:text="${weather.getTemperature()+' °C'}"></strong>
+                        </p>
+                        <p><i class="fa fa-temperature-low" style="color: #00f;"></i><strong
+                                th:text="${' '+weather.getMinTemperature()+' °C'}"></strong></p>
+                        <p><i class="fa fa-temperature-high" style="color: #f00;"></i><strong
+                                th:text="${' '+weather.getMaxTemperature()+' °C'}"></strong></p>
+                        <p><i class="fa fa-tint"></i><strong th:text="${' '+weather.getHumidity()+' %'}"></strong>
+                        </p>
+                        <p><i class="fab fa-cloudscale"></i><strong
+                                th:text="${' '+weather.getPressure()+' hPa'}"></strong></p>
+                        <div class="d-flex flex-row align-items-center">
+                            <p class="mb-0 me-4" th:text="${weather.getDescription()}">Scattered Clouds</p>
+                            <i th:class="${openWeatherIconProvider.getWeatherIcon(weather.getWeatherIcon()) + ' fa-3x'}"
+                               style="color: #aaf;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/font-awesome/js/fontawesome.min.js}"></script>
+</body>
+</html>
