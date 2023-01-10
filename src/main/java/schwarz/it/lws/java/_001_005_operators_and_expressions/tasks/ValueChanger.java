@@ -19,9 +19,7 @@ Bearbeitungszeit:
     30 Minuten
  */
 
-import java.util.Scanner;
-
-public class ValueCanger {
+public class ValueChanger {
 
     public static void main(String[] args) {
 

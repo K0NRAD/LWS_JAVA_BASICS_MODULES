@@ -50,11 +50,11 @@ Diese Operatoren bestimmen die Logik in einem Ausdruck, der zwei oder mehr Werte
 
 Beispiele: (gegeben x = 8 und y = 2)
 
-| Operator                 | Beschreibung                                    | Beispiel                                |
-|--------------------------|-------------------------------------------------|-----------------------------------------|
-| && logisch und           | Gibt true zurück wenn beide Operanten true sind | x > y && x != y  -> true                |
-| &#124;&#124; logisch und | Gibt true zurück wenn beide Operanten true sind | x < y &#124;&#124; x != y  -> true      |
-| ! logisch not            | Negiert das Ergebnis einer Prüfung              | !(x < y &#124;&#124; x != y)  -> false) |
+| Operator                  | Beschreibung                                    | Beispiel                                |
+|---------------------------|-------------------------------------------------|-----------------------------------------|
+| && logisch und            | Gibt true zurück wenn beide Operanten true sind | x > y && x != y  -> true                |
+| &#124;&#124; logisch oder | Gibt true wenn einer der Operanten true ist     | x < y &#124;&#124; x != y  -> true      |
+| ! logisch not             | Negiert das Ergebnis einer Prüfung              | !(x < y &#124;&#124; x != y)  -> false) |
 
 Die Operatoren && und || sind sogenannte Kurzschluss-Operatoren, bei einer Verkettung, bricht die Überprüfung sofort ab,
 sobald eine Bedingung nicht mehr zutrifft. Stelle dir vor, du willst einen externen Service aufrufen, das gibt nur Sinn,
