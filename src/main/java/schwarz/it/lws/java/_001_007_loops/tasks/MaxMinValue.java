@@ -49,7 +49,7 @@ public class MaxMinValue {
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 // Don't change the JUnit test code.
 
-class MaxMinValueTests {
+class MaxMinValueTest {
     MaxMinValue maxMinValue;
 
     @BeforeEach

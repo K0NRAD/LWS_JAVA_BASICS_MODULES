@@ -41,8 +41,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Scanner;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class EANCalculator {
@@ -52,7 +50,7 @@ public class EANCalculator {
     }
 
     public static int calculateChecksum(String ean) {
-
+        int sum = 0;
         return -1;
     }
 }
@@ -63,29 +61,39 @@ public class EANCalculator {
 class EANCalculatorTest {
 
     @Test
+    void testFirstEan() {
+        String ean ="978381582086";
+
+        int checksum = EANCalculator.calculateChecksum(ean);
+
+        assertThat(checksum).isEqualTo(5);
+    }
+
+    @Test
     public void testEanWithChecksum0() {
         // given
-        String ean = "4005776013500";
+        String ean = "4005776013502";
 
         // when
         int checksum = EANCalculator.calculateChecksum(ean);
 
         // then
-        assertThat(checksum).isEqualTo(0);
+        assertThat(checksum).isEqualTo(2);
     }
 
     @ParameterizedTest
     @CsvSource({
             "4006381333931, 1",
-            "4015605622061, 1",
-            "4005776013500, 0",
-            "4047443292379, 9",
-            "4005808881179, 9",
-            "4024074259272, 2",
-            "4022679793592, 2",
+            "4015605622065, 5",
+            "4005776013502, 2",
+            "4047443292377, 7",
+            "4005808881178, 8",
+            "4024074259276, 6",
+            "4022679793591, 1",
             "4006381333917, 7",
-            "4016937065227, 7",
-            "4006381333924, 4"})
+            "4016937065223, 3",
+            "4006381333924, 4",
+            "4005776013540, 0"})
     public void testChecksumFromMultibleEan13Codes(String ean, int checkSum) {
         assertThat(EANCalculator.calculateChecksum(ean)).isEqualTo(checkSum);
     }

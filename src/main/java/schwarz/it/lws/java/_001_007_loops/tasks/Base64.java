@@ -5,7 +5,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -87,6 +86,8 @@ Beispiel:
     01010011 01100011 01101000 01110111 01100001 01110010 01111010 00100000 01001001 01010100 00000000 00000000
     S        c        h        w        a        r        z                 I        T
 
+    31     31
+    268421 268421
     010100 110110 001101 101000 011101 110110 000101 110010 011110 100010 000001 001001 010101 000000 000000 000000
     U      2      N      o      d      2      F      y      e      i      B      J      V      A      =      =
 
@@ -98,6 +99,7 @@ Bearbeitungszeit:
  */
 
 public class Base64 {
+    private static final String CODEC = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789/+=";
 
     public static void main(String[] args) {
 
@@ -132,8 +134,8 @@ class Base64Test {
     // Erstelle einen Stream von Testdaten für den Enkodierungstest
     private static Stream<Object[]> encodeTestDataProvider() {
         return Stream.of(
-                new Object[]{"Schwarz IT", "U2Nod2FyeiBJVA=="},
                 new Object[]{"Carton", "Q2FydG9u"},
+                new Object[]{"Schwarz IT", "U2Nod2FyeiBJVA=="},
                 new Object[]{"Testing the Base64 encoding", "VGVzdGluZyB0aGUgQmFzZTY0IGVuY29kaW5n"}
         );
     }
