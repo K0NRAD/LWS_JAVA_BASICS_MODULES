@@ -12,7 +12,7 @@ Task: Max Min Value
     Es kann dabei möglicherweise auf Schleifen oder bitweise Operationen
     zurückgegriffen werden.
 
-    Es dürfen keine Arrays, liste, Standard-Funktionen oder Bibliotheken verwendet
+    Es dürfen keine Arrays, Liste, Standard-Funktionen oder Bibliotheken verwendet
     werden um die Maximal- und Minimalzahl zu ermitteln.
 
 Hinweis:
