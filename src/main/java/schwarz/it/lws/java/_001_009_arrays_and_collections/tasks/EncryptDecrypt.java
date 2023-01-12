@@ -73,52 +73,16 @@ Bearbeitungszeit:
 public class EncryptDecrypt {
 
     public String encrypt(String text, int n) {
-        // Führe die folgenden Schritte so lange aus, wie n größer als 0 ist
-        while (n > 0) {
-            // Erstelle Streams für die geraden und ungeraden Zeichen im Text
-            Stream<Character> evenChars = IntStream.range(0, text.length())
-                    .filter(i -> i % 2 == 0)
-                    .mapToObj(text::charAt);
-            Stream<Character> oddChars = IntStream.range(0, text.length())
-                    .filter(i -> i % 2 != 0)
-                    .mapToObj(text::charAt);
-
-            // Erstelle pro Iteration ein neues String Objekt aus den beiden Teil Character Streams
-            text = Stream.concat(oddChars, evenChars)
-                    .collect(Collector.of(
-                            StringBuilder::new,
-                            StringBuilder::append,
-                            StringBuilder::append,
-                            StringBuilder::toString));
-            n--;
-        }
         return text;
     }
 
     public String decrypt(String text, int n) {
-
-        int oddSize = IntStream.range(0, text.length()).reduce(0, (accu, it) -> accu + (it % 2 != 0 ? 1 : 0));
-
-        while (n > 0) {
-            char[] evenCharacter = text.substring(oddSize).toCharArray();
-            char[] oddCharacter = text.substring(0, oddSize).toCharArray();
-            StringBuilder sb = new StringBuilder();
-            int i = 0;
-            while (sb.length() < text.length()) {
-                if (i < evenCharacter.length) {
-                    sb.append(evenCharacter[i]);
-                }
-                if (i < oddCharacter.length) {
-                    sb.append(oddCharacter[i]);
-                }
-                i++;
-            }
-            text = sb.toString();
-            n--;
-        }
         return text;
     }
 }
+
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// Don't change the JUnit test code.
 
 class EncryptDecryptTest {
     EncryptDecrypt encryptDecrypt;

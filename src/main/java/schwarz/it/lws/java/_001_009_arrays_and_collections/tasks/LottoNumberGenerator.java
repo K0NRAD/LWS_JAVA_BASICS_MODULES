@@ -49,37 +49,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LottoNumberGenerator {
 
     /**
-     * Diese Methode nimmt ein Array von Lottozahlen als Eingabe und
-     * gibt sie auf dem Bildschirm aus.
-     */
-    public static void printLottoNumbers(int[] lottoNumbers) {
-        for (int lottoNumber : lottoNumbers) {
-            System.out.print(lottoNumber + " ");
-        }
-        System.out.println();
-    }
-
-    /**
      * Diese Methode generiert 6 zufällige Lottozahlen im Bereich von 1 bis 49
      * und gibt sie als Array von ints zurück.
      */
     public int[] generateLottoNumbers() {
-        Set<Integer> lottoNumbersSet = new TreeSet<>();
-        Random random = new Random();
-
-        while (lottoNumbersSet.size() < 6) {
-            lottoNumbersSet.add(random.nextInt(49) + 1);
-        }
-
         int[] lottoNumbers = new int[6];
-        int i = 0;
-        for (int lottoNumber : lottoNumbersSet) {
-            lottoNumbers[i++] = lottoNumber;
-        }
-
         return lottoNumbers;
     }
 }
+
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+// Don't change the JUnit test code.
 
 class LottoNumberGeneratorTest {
 
