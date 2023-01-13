@@ -9,5 +9,5 @@
 ## IntelliJ
 
 ```text
-https://code-with-me.global.jetbrains.com/_pJI_j62NIWhU-pVaxu7ig#p=IU&fp=8B7552D59AE1F4FFEDE2C04B3FFEDB4D55AABA67D84A66F618E321D5DE15C945
+https://code-with-me.global.jetbrains.com/0DPoOza5ryRXUhEdndu7eQ#p=IU&fp=5AC45621426995DC61BB3AC63AB3D47723F0E1EE8F7B224A0EFEDA7479DF0A8F
 ```
